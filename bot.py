@@ -22,7 +22,7 @@ async def on_message(message):
     msg = message.content.lower()
     user = message.author
     if msg in words:
-        await message.send(f'Hello {user.mention}')
+        await message.channel.send(f'Hello {user.mention}')
 
 TOKEN = os.environ.get('TOKEN')
 
