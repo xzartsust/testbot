@@ -11,7 +11,7 @@ async def on_ready():
 @bot.command()
 async def ping(ctx, text: str):
     user = ctx.message.author
-    await ctx.send(f'Pong {user.mention} {text} {text1}')
+    await ctx.send(f'Pong {user.mention} {text}')
 
 TOKEN = os.environ.get('TOKEN')
 
