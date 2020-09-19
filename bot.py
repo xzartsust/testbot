@@ -17,8 +17,8 @@ async def ping(ctx, *, text: str):
 
 @bot.event
 async def on_message(message):
-
     await bot.process_commands(message)
+
     msg = message.content.lower()
     user = message.author
     if msg in words:
