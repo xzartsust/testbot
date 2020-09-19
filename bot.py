@@ -19,8 +19,9 @@ async def ping(ctx, *, text: str):
 async def on_message(message):
 
     await bot.process_commands(message)
+    msg = message.content.lower()
     user = message.author
-    if message in words:
+    if msg in words:
         await message.send(f'Hello {user.mention}')
 
 TOKEN = os.environ.get('TOKEN')
