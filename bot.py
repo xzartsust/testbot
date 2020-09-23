@@ -3,8 +3,8 @@ from discord.ext import commands
 import os
 
 bot = commands.Bot(command_prefix = '/')
-
-bot.change_presence(activity = discord.Game(name='Gh'))
+async def change_status():
+    await bot.change_presence(activity = discord.Game(name='Gh'))
 
 hello_words = ['Hi', 'hello', 'Привіт']
 
