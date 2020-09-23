@@ -23,6 +23,7 @@ async def on_message(message):
         await message.channel.send(f'Hi {user.mention}')
 
 @bot.command()
+@commands.cooldown(1, 15, commands.BucketType.member)
 async def ping(ctx, *, text: str):
     user = ctx.message.author
     await ctx.send(f'Pong {user.mention} {text}')
