@@ -4,6 +4,8 @@ import os
 
 bot = commands.Bot(command_prefix = '/')
 
+bot.change_presence(activity = discord.Game(name='Gh'))
+
 hello_words = ['Hi', 'hello', 'Привіт']
 
 @bot.event
