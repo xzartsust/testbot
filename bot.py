@@ -16,9 +16,7 @@ async def on_message(message):
 
     user = message.author
 
-    msg = message.content.lower()
-
-    if msg in hello_words:
+    if message.content in hello_words:
         await message.channel.send(f'Привіт {user.mention}')
     
 
