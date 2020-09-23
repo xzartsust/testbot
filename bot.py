@@ -3,14 +3,13 @@ from discord.ext import commands
 import os
 
 bot = commands.Bot(command_prefix = '/')
-async def change_status():
-    await bot.change_presence(activity = discord.Game(name='Gh'))
 
 hello_words = ['Hi', 'hello', 'Привіт']
 
 @bot.event
 async def on_ready():
     print(f'Bot {bot.user.name} is connected')
+    await bot.change_presence(activity = discord.Game(name='Gh'))
 
 @bot.event
 async def on_message(message):
