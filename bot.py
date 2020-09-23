@@ -4,7 +4,7 @@ import os
 
 bot = commands.Bot(command_prefix = '/')
 
-hello_words = ['Hi', 'Hello', 'Привіт']
+hello_words = ['Hi', 'hello', 'Привіт']
 
 @bot.event
 async def on_ready():
@@ -12,14 +12,14 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    
     await bot.process_commands(message)
 
+    msg = message.content
     user = message.author
 
-    if message.content in hello_words:
-        await message.channel.send(f'Привіт {user.mention}')
-    
-
+    if msg in hello_words:
+        await message.channel.send(f'Hi {user.mention}')
 
 @bot.command()
 async def ping(ctx, *, text: str):
