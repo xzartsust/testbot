@@ -9,7 +9,7 @@ hello_words = ['Hi', 'hello', 'Привіт']
 @bot.event
 async def on_ready():
     print(f'Bot {bot.user.name} is connected')
-    
+    await bot.change_presence(status = discord.Status.idle, activity = discord.Game(name = 'Hello'))
 
 @bot.event
 async def on_message(message):
