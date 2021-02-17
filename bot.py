@@ -1,33 +1,29 @@
-import discord
-from discord.ext import commands
-import os
+from logging import ERROR, error
+import telebot
+from telebot import types
+from telebot.apihelper import ApiHTTPException, ApiTelegramException, ApiException
 
-bot = commands.Bot(command_prefix = '/')
+bot = telebot.TeleBot('1400963433:AAGbIIlBPo0c1SwUcBaag_S_9h7KpTFhLSU')
 
-hello_words = ['Hi', 'hello', 'Привіт']
+number = []
+print(number)
 
-@bot.event
-async def on_ready():
-    print(f'Bot {bot.user.name} is connected')
-    await bot.change_presence(status = discord.Status.idle, activity = discord.Game(name = 'Hello'))
+@bot.message_handler(commands = ['start'])
+def get_contact(message):
 
-@bot.event
-async def on_message(message):
-    
-    await bot.process_commands(message)
+    if message.from_user.id not in number:
+        number.append(message.from_user.id)
 
-    msg = message.content
-    user = message.author
+    print(number)
 
-    if msg in hello_words:
-        await message.channel.send(f'Hi {user.mention}')
+@bot.message_handler(commands = ['send'])
+def send(message):
 
-@bot.command()
-@commands.cooldown(1, 15, commands.BucketType.member)
-async def ping(ctx, *, text: str):
-    user = ctx.message.author
-    await ctx.send(f'Pong {user.mention} {text}')
+    try:
+        for i in range(len(number)):
+            bot.send_message(number[i], 'test')
+    except ApiException:
+        print('no')
 
-TOKEN = os.environ.get('TOKEN')
-
-bot.run(TOKEN)
+if __name__ == "__main__":
+    bot.polling(none_stop = True, interval = 0)
